@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Atea.Common\Atea.Common.csproj" />
+    <ProjectReference Include="..\Atea.Data\Atea.Data.csproj" />
+    <ProjectReference Include="..\Atea.Models\Atea.Models.csproj" />
+  </ItemGroup>
+
+</Project>

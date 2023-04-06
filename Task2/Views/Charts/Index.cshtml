@@ -1,0 +1,27 @@
+﻿<div class="text-center mt-5">
+    <label class="label">Temperature Chart</label>
+    <div id="ateatemperaturechart" style="height: 250px;"></div>
+</div>
+<div class="text-center mt-5">
+    <label class="label" id="ateatemperaturelinelabel"></label>
+    <label class="label">Temperature Trend for the Past 2h</label>
+    <div id="ateatemperatureline" style="height: 250px;"></div>
+</div>
+<div class="text-center mt-5">
+    <label class="label">Wind Chart</label>
+    <div id="ateawindchart" style="height: 250px;"></div>
+</div>
+<div class="text-center mt-5">
+    <label class="label" id="ateawindlinelabel"></label>
+    <label class="label">Wind Trend for the Past 2h</label>
+    <div id="ateawindline" style="height: 250px;"></div>
+</div>
+
+<div id="reloadStatus"></div>
+<pre id="code" class="prettyprint linenums"></pre>
+
+@section Scripts{
+    <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+    <script src="~/js/weatherChart.js"></script>
+}
