@@ -3,6 +3,7 @@ using Atea.Common.Extensions;
 using Atea.Data;
 using Atea.Data.Entities;
 using Atea.Models.DTOs;
+using Atea.Models.Models;
 using Atea.Models.Responses;
 using Atea.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -19,17 +20,19 @@ namespace Atea.Services.Services
     {
         private readonly HttpClient _httpClient;
         protected AteaDbContext _context;
+        private readonly AppSettingsModelTask2 _appSettings;
 
-        public WeatherAPIService(HttpClient httpClient, AteaDbContext context)
+        public WeatherAPIService(HttpClient httpClient, AteaDbContext context, AppSettingsModelTask2 appSettings)
         {
             _httpClient = httpClient;
             _context = context;
+            _appSettings = appSettings;
         }
 
         public async Task<PublicAPIWeatherResponse> GetForecastByCity(string city)
         {
             var publicWeatherAPIUrl = Common.Constants.AteaConstants.PUBLIC_WEATHER_API_URL;
-            publicWeatherAPIUrl = publicWeatherAPIUrl.Replace("{city}", city).Replace("{appId}", Common.Constants.AteaConstants.OPEN_WEATHER_APPID);
+            publicWeatherAPIUrl = publicWeatherAPIUrl.Replace("{city}", city).Replace("{appId}", _appSettings.OpenWeatherAppId);
 
             HttpRequestMessage newRequest = new HttpRequestMessage(HttpMethod.Get, publicWeatherAPIUrl);
 

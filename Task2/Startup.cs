@@ -1,17 +1,15 @@
 using Atea.Data;
+using Atea.Models.Models;
 using Atea.Services.Interfaces;
 using Atea.Services.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.IO;
 
 namespace Task2
 {
@@ -30,6 +28,13 @@ namespace Task2
             services.AddDbContext<AteaDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ATEA_DB_CONNECTION_STRING")));
 
             services.AddControllersWithViews();
+
+            //App Settings.
+            string openWeatherAppId = Configuration.GetValue<string>("OpenWeatherAppId") ?? throw new InvalidDataException("Missing Environment Variable OpenWeatherAppId!");
+            services.AddSingleton(new AppSettingsModelTask2
+            {
+                OpenWeatherAppId = openWeatherAppId
+            });
 
             services.AddHttpClient<IWeatherAPIService, WeatherAPIService>();
 
