@@ -7,7 +7,6 @@
 
         //Task 2
         public static readonly string PUBLIC_WEATHER_API_URL = "http://api.openweathermap.org/data/2.5/weather?q={city}&units=metric&APPID={appId}";
-        public static readonly string OPEN_WEATHER_APPID = "e518c231bcbc466cf07b545886e4b693";
         public static readonly int WEATHER_TREND_PAST_HOURS = -2;
     }
 }
